@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he" dir="ltr" className={`${syne.variable} ${dmSans.variable}`}>
+    <html lang="he" dir="rtl" className={`${syne.variable} ${dmSans.variable}`}>
       <body>{children}</body>
     </html>
   );

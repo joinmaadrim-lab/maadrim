@@ -4,47 +4,47 @@ import { useState } from 'react'
 
 const quickFills: Record<string, { text: string; name: string; category: string; avatar: string; services: { name: string; price: string }[] }> = {
   nail: {
-    text: "Nail salon in Tel Aviv. Services: Full Manicure + Gel ₪120, Nail Art Design ₪80, Pedicure + Polish ₪150. Available Sun-Fri 9:00-20:00.",
-    name: "Maya's Nail Studio",
-    category: "Professional Nail Technician",
-    avatar: "MN",
+    text: "סלון מניקור מקצועי בתל אביב. שירותים: מניקור ג'ל מלא ₪120, עיצוב ציפורניים ₪80, פדיקור + לק ₪150. זמינה א'-ו' 9:00-20:00.",
+    name: "סטודיו מאיה",
+    category: "מניקוריסטית מקצועית",
+    avatar: "מא",
     services: [
-      { name: "Full Manicure + Gel", price: "₪120" },
-      { name: "Nail Art Design", price: "₪80" },
-      { name: "Pedicure + Polish", price: "₪150" },
+      { name: "מניקור ג'ל מלא", price: "₪120" },
+      { name: "עיצוב ציפורניים", price: "₪80" },
+      { name: "פדיקור + לק", price: "₪150" },
     ],
   },
   barber: {
-    text: "Barber shop in Tel Aviv. Services: Classic Haircut ₪70, Beard Trim ₪50, Full Grooming ₪110. Walk-ins welcome.",
-    name: "The Barber Shop",
-    category: "Master Barber",
-    avatar: "BS",
+    text: "ספרייה מקצועית בתל אביב. שירותים: תספורת קלאסית ₪70, עיצוב זקן ₪50, טיפול מלא ₪110. כניסה חופשית.",
+    name: "הספרייה",
+    category: "ספר מקצועי",
+    avatar: "סב",
     services: [
-      { name: "Classic Haircut", price: "₪70" },
-      { name: "Beard Trim", price: "₪50" },
-      { name: "Full Grooming", price: "₪110" },
+      { name: "תספורת קלאסית", price: "₪70" },
+      { name: "עיצוב זקן", price: "₪50" },
+      { name: "טיפול מלא", price: "₪110" },
     ],
   },
   tutor: {
-    text: "Math & Science tutor for high school students in Tel Aviv. Sessions: 1hr ₪150, Package of 5 ₪650. Online and in-person.",
-    name: "Smart Tutor",
-    category: "Academic Tutor",
-    avatar: "ST",
+    text: "מורה פרטי למתמטיקה ומדעים לתיכון בתל אביב. שיעור שעה ₪150, חבילת 5 שיעורים ₪650. אונליין ופנים אל פנים.",
+    name: "מורה פרטי",
+    category: "מורה פרטי",
+    avatar: "מפ",
     services: [
-      { name: "1-Hour Session", price: "₪150" },
-      { name: "5-Session Package", price: "₪650" },
-      { name: "Exam Prep", price: "₪200" },
+      { name: "שיעור שעה", price: "₪150" },
+      { name: "חבילת 5 שיעורים", price: "₪650" },
+      { name: "הכנה לבחינות", price: "₪200" },
     ],
   },
   coffee: {
-    text: "Specialty coffee shop in Tel Aviv. Menu: Espresso ₪12, Flat White ₪18, Avocado Toast ₪38. Open daily 7am-9pm.",
-    name: "The Coffee Corner",
-    category: "Specialty Coffee",
-    avatar: "CC",
+    text: "בית קפה ספיישלטי בתל אביב. תפריט: אספרסו ₪12, פלט וויט ₪18, טוסט אבוקדו ₪38. פתוח כל יום 7:00-21:00.",
+    name: "פינת הקפה",
+    category: "קפה ספיישלטי",
+    avatar: "פק",
     services: [
-      { name: "Espresso", price: "₪12" },
-      { name: "Flat White", price: "₪18" },
-      { name: "Avocado Toast", price: "₪38" },
+      { name: "אספרסו", price: "₪12" },
+      { name: "פלט וויט", price: "₪18" },
+      { name: "טוסט אבוקדו", price: "₪38" },
     ],
   },
 }
@@ -57,13 +57,13 @@ type Preview = {
 }
 
 const defaultPreview: Preview = {
-  name: "Maya's Nail Studio",
-  category: "Professional Nail Technician",
-  avatar: "MA",
+  name: "סטודיו מאיה",
+  category: "מניקוריסטית מקצועית",
+  avatar: "מא",
   services: [
-    { name: "Full Manicure + Gel", price: "₪120" },
-    { name: "Nail Art Design", price: "₪80" },
-    { name: "Pedicure + Polish", price: "₪150" },
+    { name: "מניקור ג'ל מלא", price: "₪120" },
+    { name: "עיצוב ציפורניים", price: "₪80" },
+    { name: "פדיקור + לק", price: "₪150" },
   ],
 }
 
@@ -72,7 +72,6 @@ export default function Home() {
   const [activeQuick, setActiveQuick] = useState<string | null>(null)
   const [preview, setPreview] = useState<Preview>(defaultPreview)
   const [loading, setLoading] = useState(false)
-  const [isHe, setIsHe] = useState(false)
 
   const handleQuickFill = (key: string) => {
     const fill = quickFills[key]
@@ -106,36 +105,6 @@ export default function Home() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const t = isHe
-    ? {
-        badge: 'מתחילים בתל אביב — הצטרפו לרשימת ההמתנה',
-        headline: <>העסק שלך.<br /><em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>חי תוך 60 שניות.</em></>,
-        sub: <>ספר ל-MAADRIM על העסק שלך. <strong style={{ color: 'var(--white)', fontWeight: 500 }}>AI בונה את חנות הוויטרינה, הלוגו והתוכן</strong> — ואז מפיץ אותם בכל מקום שהלקוחות שלך נמצאים.</>,
-        placeholder: 'ספר לנו על העסק שלך — שירותים, מחירים, מיקום, כל מה שיש לך...',
-        aiNote: 'אין לך הכל? AI יבנה את השאר.',
-        generateBtn: 'צור את החנות שלי',
-        trust: ['7 ימים בחינם', 'ללא כרטיס אשראי', 'לעסקים אמיתיים'],
-        navHow: 'איך זה עובד',
-        navLive: 'מכירה בשידור חי',
-        navPricing: 'מחירים',
-        navCta: 'צור את החנות שלך',
-        lang: 'English',
-      }
-    : {
-        badge: 'Launching in Tel Aviv — Join the waitlist',
-        headline: <>Your business.<br /><em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Live in 60 seconds.</em></>,
-        sub: <>Tell MAADRIM about your business. <strong style={{ color: 'var(--white)', fontWeight: 500 }}>AI builds your storefront, logo, and content</strong> — then distributes it everywhere your customers are.</>,
-        placeholder: 'Tell us about your business — services, prices, location, anything you have...',
-        aiNote: "Don't have everything? AI builds it for you.",
-        generateBtn: 'Create my storefront',
-        trust: ['Free 7 days', 'No credit card needed', 'Built for real businesses'],
-        navHow: 'How it works',
-        navLive: 'Live selling',
-        navPricing: 'Pricing',
-        navCta: 'Create your storefront',
-        lang: 'עברית',
-      }
-
   return (
     <>
       {/* LOADING OVERLAY */}
@@ -148,14 +117,13 @@ export default function Home() {
           <div style={{
             width: 64, height: 64,
             border: '2px solid rgba(200,169,110,0.2)',
-            borderTopColor: 'var(--gold)',
-            borderRadius: '50%',
+            borderTopColor: 'var(--gold)', borderRadius: '50%',
             animation: 'spin 1s linear infinite',
           }} />
           <div style={{ fontFamily: 'var(--font-syne)', fontSize: 18, color: 'var(--gold)' }}>
-            Analyzing your business...
+            מנתח את העסק שלך...
           </div>
-          <div style={{ fontSize: 14, color: 'var(--text-muted)' }}>AI is building your storefront</div>
+          <div style={{ fontSize: 14, color: 'var(--text-muted)' }}>AI בונה את החנות שלך</div>
         </div>
       )}
 
@@ -173,21 +141,15 @@ export default function Home() {
           letterSpacing: '0.12em', color: 'var(--gold)', textDecoration: 'none',
         }}>MAADRIM</a>
         <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
-          <a onClick={() => scrollTo('how')} style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: 14, cursor: 'pointer' }}>{t.navHow}</a>
-          <a onClick={() => scrollTo('live')} style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: 14, cursor: 'pointer' }}>{t.navLive}</a>
-          <a onClick={() => scrollTo('pricing')} style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: 14, cursor: 'pointer' }}>{t.navPricing}</a>
+          <a onClick={() => scrollTo('how')} style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: 14, cursor: 'pointer' }}>איך זה עובד</a>
+          <a onClick={() => scrollTo('live')} style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: 14, cursor: 'pointer' }}>מכירה בשידור חי</a>
+          <a onClick={() => scrollTo('pricing')} style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: 14, cursor: 'pointer' }}>מחירים</a>
           <a onClick={() => scrollTo('pricing')} style={{
             background: 'var(--gold)', color: 'var(--black)',
             padding: '10px 22px', borderRadius: 'var(--radius-sm)',
             fontWeight: 500, fontSize: 14, cursor: 'pointer', textDecoration: 'none',
-          }}>{t.navCta}</a>
+          }}>צור את החנות שלך</a>
         </div>
-        <button onClick={() => setIsHe(!isHe)} style={{
-          fontSize: 12, color: 'var(--text-muted)',
-          border: '1px solid var(--border)', padding: '6px 12px',
-          borderRadius: 'var(--radius-sm)', cursor: 'pointer',
-          background: 'transparent', fontFamily: 'var(--font-dm-sans)',
-        }}>{t.lang}</button>
       </nav>
 
       {/* HERO */}
@@ -215,16 +177,21 @@ export default function Home() {
               color: 'var(--gold)', marginBottom: 28,
             }}>
               <span style={{ width: 6, height: 6, background: 'var(--gold)', borderRadius: '50%', animation: 'pulse 2s infinite', display: 'inline-block' }} />
-              {t.badge}
+              מתחילים בתל אביב — הצטרפו לרשימת ההמתנה
             </div>
             <h1 className="fade-up-2" style={{
               fontFamily: 'var(--font-syne)', fontSize: 'clamp(42px, 5vw, 68px)',
               fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: 24,
-            }}>{t.headline}</h1>
+            }}>
+              העסק שלך.<br />
+              <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>חי תוך 60 שניות.</em>
+            </h1>
             <p className="fade-up-3" style={{
               fontSize: 18, color: 'var(--text-muted)', lineHeight: 1.7,
               marginBottom: 40, maxWidth: 440,
-            }}>{t.sub}</p>
+            }}>
+              ספר ל-MAADRIM על העסק שלך. <strong style={{ color: 'var(--white)', fontWeight: 500 }}>AI בונה את חנות הוויטרינה, הלוגו והתוכן</strong> — ואז מפיץ אותם בכל מקום שהלקוחות שלך נמצאים.
+            </p>
 
             {/* INPUT AREA */}
             <div className="fade-up-4" style={{
@@ -233,7 +200,7 @@ export default function Home() {
             }}>
               <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 8, marginBottom: 14 }}>
                 {(['nail', 'barber', 'tutor', 'coffee'] as const).map((key) => {
-                  const labels: Record<string, string> = { nail: '💅 Nail Salon', barber: '✂️ Barber', tutor: '📚 Tutor', coffee: '☕ Coffee Shop' }
+                  const labels: Record<string, string> = { nail: '💅 סלון מניקור', barber: '✂️ ספרייה', tutor: '📚 מורה פרטי', coffee: '☕ בית קפה' }
                   return (
                     <button key={key} onClick={() => handleQuickFill(key)} style={{
                       background: activeQuick === key ? 'var(--gold)' : 'rgba(200,169,110,0.08)',
@@ -249,11 +216,11 @@ export default function Home() {
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 rows={3}
-                placeholder={t.placeholder}
+                placeholder="ספר לנו על העסק שלך — שירותים, מחירים, מיקום, כל מה שיש לך..."
                 style={{
                   width: '100%', background: 'transparent', border: 'none',
                   outline: 'none', color: 'var(--white)', fontFamily: 'var(--font-dm-sans)',
-                  fontSize: 15, resize: 'none', lineHeight: 1.6,
+                  fontSize: 15, resize: 'none', lineHeight: 1.6, textAlign: 'right',
                 }}
               />
               <div style={{
@@ -262,7 +229,7 @@ export default function Home() {
               }}>
                 <span style={{ fontSize: 12, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 6 }}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  {t.aiNote}
+                  אין לך הכל? AI יבנה את השאר.
                 </span>
                 <button onClick={handleGenerate} style={{
                   background: 'var(--gold)', color: 'var(--black)', border: 'none',
@@ -270,14 +237,14 @@ export default function Home() {
                   fontSize: 15, fontWeight: 600, fontFamily: 'var(--font-syne)',
                   cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap',
                 }}>
-                  {t.generateBtn}
+                  צור את החנות שלי
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
               </div>
             </div>
 
             <div className="fade-up-4" style={{ display: 'flex', alignItems: 'center', gap: 20, fontSize: 13, color: 'var(--text-muted)', flexWrap: 'wrap' as const }}>
-              {t.trust.map((item, i) => (
+              {['7 ימים בחינם', 'ללא כרטיס אשראי', 'לעסקים אמיתיים'].map((item, i) => (
                 <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                   {i > 0 && <span style={{ width: 4, height: 4, background: 'var(--text-muted)', borderRadius: '50%', display: 'inline-block' }} />}
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5"><path d="M20 6L9 17l-5-5"/></svg>
@@ -290,7 +257,7 @@ export default function Home() {
           {/* PREVIEW PHONE */}
           <div className="fade-up-3" style={{ position: 'relative' }}>
             <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: 12, fontFamily: 'var(--font-syne)' }}>
-              YOUR STOREFRONT PREVIEW
+              תצוגה מקדימה של החנות שלך
             </div>
             <div style={{
               background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border)',
@@ -318,7 +285,7 @@ export default function Home() {
                 <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: 18, marginBottom: 4 }}>{preview.name}</div>
                 <div style={{ fontSize: 12, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
                   {preview.category}
-                  <span style={{ color: 'var(--gold)', fontSize: 11 }}>★ Verified</span>
+                  <span style={{ color: 'var(--gold)', fontSize: 11 }}>★ מאומת</span>
                 </div>
               </div>
               <div style={{ padding: '16px 20px', borderBottom: '1px solid var(--border)' }}>
@@ -333,7 +300,7 @@ export default function Home() {
                       fontSize: 10, background: 'rgba(200,169,110,0.12)', color: 'var(--gold)',
                       border: '1px solid rgba(200,169,110,0.3)', padding: '3px 10px',
                       borderRadius: 100, cursor: 'pointer',
-                    }}>Book</button>
+                    }}>הזמן</button>
                   </div>
                 ))}
               </div>
@@ -344,20 +311,20 @@ export default function Home() {
                   cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                 }}>
                   <svg width="16" height="16" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.087.535 4.048 1.474 5.755L.057 24l6.394-1.394C8.06 23.498 10.001 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.892 0-3.665-.522-5.178-1.428l-.371-.22-3.796.827.846-3.705-.24-.381C2.537 15.616 2 13.879 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-                  WhatsApp to book
+                  הזמינו דרך WhatsApp
                 </button>
                 <button style={{
                   background: 'rgba(255,255,255,0.06)', color: 'var(--white)',
                   border: '1px solid var(--border)', padding: 12,
                   borderRadius: 'var(--radius-sm)', fontSize: 14, cursor: 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                }}>📅 Book appointment</button>
+                }}>📅 קביעת תור</button>
               </div>
               <div style={{
                 padding: '12px 20px', background: 'rgba(255,255,255,0.02)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12,
               }}>
-                <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Share via:</span>
+                <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>שתפו דרך:</span>
                 {[['W','rgba(37,211,102,0.15)','#25D366'],['I','rgba(225,48,108,0.15)','#e1306c'],['f','rgba(24,119,242,0.15)','#1877f2']].map(([letter, bg, color]) => (
                   <div key={letter} style={{ width: 28, height: 28, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, cursor: 'pointer', background: bg, color }}>{letter}</div>
                 ))}
@@ -372,17 +339,17 @@ export default function Home() {
       {/* HOW IT WORKS */}
       <section id="how" style={{ padding: '100px 48px', position: 'relative', zIndex: 1 }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.2em', color: 'var(--gold)', fontFamily: 'var(--font-syne)', marginBottom: 16 }}>How it works</div>
+          <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.2em', color: 'var(--gold)', fontFamily: 'var(--font-syne)', marginBottom: 16 }}>איך זה עובד</div>
           <h2 style={{ fontFamily: 'var(--font-syne)', fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 800, lineHeight: 1.1, marginBottom: 16, letterSpacing: '-0.02em' }}>
-            From nothing to <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>live business</em><br />in 4 steps
+            מאפס ל<em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>עסק חי</em><br />ב-4 צעדים
           </h2>
-          <p style={{ fontSize: 17, color: 'var(--text-muted)', maxWidth: 520, lineHeight: 1.7, marginBottom: 60 }}>No design skills. No tech knowledge. Just describe your business and AI handles the rest.</p>
+          <p style={{ fontSize: 17, color: 'var(--text-muted)', maxWidth: 520, lineHeight: 1.7, marginBottom: 60 }}>ללא ידע בעיצוב. ללא ידע טכני. רק תאר את העסק שלך ו-AI מטפל בשאר.</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 2, background: 'var(--border)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
             {[
-              { n: '01', icon: '📋', title: 'Dump everything you have', desc: 'Services, prices, photos, Instagram link — anything. The more you give, the better. Missing something? AI creates it.' },
-              { n: '02', icon: '🧠', title: 'AI analyzes & builds', desc: 'MAADRIM reads everything, generates your logo if missing, writes descriptions, and designs your storefront automatically.' },
-              { n: '03', icon: '⚡', title: 'Your storefront goes live', desc: 'A complete, branded selling page — with booking, WhatsApp, services, and pricing. Ready in under 60 seconds.' },
-              { n: '04', icon: '📡', title: 'Share everywhere instantly', desc: 'One click to push your storefront to WhatsApp, Instagram, and Facebook. Reach all your customers at once.' },
+              { n: '01', icon: '📋', title: 'שתף את כל מה שיש לך', desc: 'שירותים, מחירים, תמונות, קישור לאינסטגרם — הכל. ככל שתיתן יותר כך התוצאה טובה יותר. חסר משהו? AI יצור אותו.' },
+              { n: '02', icon: '🧠', title: 'AI מנתח ובונה', desc: 'MAADRIM קורא הכל, מייצר לוגו אם אין, כותב תיאורים ומעצב את החנות שלך אוטומטית.' },
+              { n: '03', icon: '⚡', title: 'החנות שלך עולה לאוויר', desc: 'דף מכירה מלא עם מיתוג — עם הזמנת תורים, WhatsApp, שירותים ומחירים. מוכן תוך פחות מ-60 שניות.' },
+              { n: '04', icon: '📡', title: 'שתף בכל מקום מיד', desc: 'לחיצה אחת כדי לדחוף את החנות שלך ל-WhatsApp, Instagram ו-Facebook. תגיע לכל הלקוחות שלך בבת אחת.' },
             ].map((step) => (
               <div key={step.n} style={{ background: 'var(--black)', padding: '36px 28px' }}>
                 <div style={{ fontFamily: 'var(--font-syne)', fontSize: 48, fontWeight: 800, color: 'rgba(200,169,110,0.12)', lineHeight: 1, marginBottom: 16 }}>{step.n}</div>
@@ -402,16 +369,16 @@ export default function Home() {
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' }}>
             <div>
-              <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.2em', color: 'var(--gold)', fontFamily: 'var(--font-syne)', marginBottom: 16 }}>AI Creation Engine</div>
+              <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.2em', color: 'var(--gold)', fontFamily: 'var(--font-syne)', marginBottom: 16 }}>מנוע יצירה AI</div>
               <h2 style={{ fontFamily: 'var(--font-syne)', fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 800, lineHeight: 1.1, marginBottom: 16, letterSpacing: '-0.02em' }}>
-                Have it or not — <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>AI covers you</em>
+                יש לך או אין — <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>AI מכסה אותך</em>
               </h2>
-              <p style={{ fontSize: 17, color: 'var(--text-muted)', maxWidth: 520, lineHeight: 1.7, marginBottom: 40 }}>Most businesses don&apos;t have everything ready. That&apos;s fine. MAADRIM AI fills every gap — so you launch anyway.</p>
+              <p style={{ fontSize: 17, color: 'var(--text-muted)', maxWidth: 520, lineHeight: 1.7, marginBottom: 40 }}>לרוב העסקים אין הכל מוכן. זה בסדר. MAADRIM AI ממלא כל חוסר — כדי שתשיק בכל מקרה.</p>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 20 }}>
                 {[
-                  { icon: '🖼️', title: 'Logo & Visual Identity', desc: "Have a logo? AI uses it. Don't have one? AI generates a professional logo that fits your business." },
-                  { icon: '✍️', title: 'Copy & Descriptions', desc: 'No time to write? AI writes compelling service descriptions, your bio, and sales copy for you.' },
-                  { icon: '🎨', title: 'Branding & Colors', desc: 'AI matches your colors, fonts, and aesthetic to create a consistent, professional brand instantly.' },
+                  { icon: '🖼️', title: 'לוגו וזהות ויזואלית', desc: 'יש לך לוגו? AI משתמש בו. אין לך? AI מייצר לוגו מקצועי שמתאים לעסק שלך.' },
+                  { icon: '✍️', title: 'טקסטים ותיאורים', desc: 'אין לך זמן לכתוב? AI כותב תיאורי שירותים משכנעים, הביוגרפיה שלך וטקסטי מכירה.' },
+                  { icon: '🎨', title: 'מיתוג וצבעים', desc: 'AI מתאים את הצבעים, הפונטים והאסתטיקה שלך כדי ליצור מותג עקבי ומקצועי מיידית.' },
                 ].map((f) => (
                   <div key={f.title} style={{ display: 'flex', gap: 16, padding: 20, borderRadius: 'var(--radius)', border: '1px solid var(--border)', background: 'var(--card-bg)' }}>
                     <div style={{ width: 40, height: 40, borderRadius: 'var(--radius-sm)', background: 'rgba(200,169,110,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, flexShrink: 0 }}>{f.icon}</div>
@@ -424,24 +391,24 @@ export default function Home() {
               </div>
             </div>
             <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: 32, textAlign: 'center' as const }}>
-              <div style={{ fontFamily: 'var(--font-syne)', fontSize: 14, fontWeight: 700, color: 'var(--gold)', marginBottom: 24, textTransform: 'uppercase' as const, letterSpacing: '0.1em' }}>What you give → What AI builds</div>
+              <div style={{ fontFamily: 'var(--font-syne)', fontSize: 14, fontWeight: 700, color: 'var(--gold)', marginBottom: 24, textTransform: 'uppercase' as const, letterSpacing: '0.1em' }}>מה אתה נותן ← מה AI בונה</div>
               {[
-                { check: 'has', label: 'Services & prices', status: 'You provided', statusClass: false },
-                { check: 'has', label: 'Location / WhatsApp', status: 'You provided', statusClass: false },
-                { check: 'ai', label: 'Logo', status: 'AI generated', statusClass: true },
-                { check: 'ai', label: 'Business description', status: 'AI generated', statusClass: true },
-                { check: 'ai', label: 'Branding & design', status: 'AI generated', statusClass: true },
+                { check: 'has', label: 'שירותים ומחירים', status: 'סיפקת', statusClass: false },
+                { check: 'has', label: 'מיקום / WhatsApp', status: 'סיפקת', statusClass: false },
+                { check: 'ai', label: 'לוגו', status: 'נוצר על ידי AI', statusClass: true },
+                { check: 'ai', label: 'תיאור העסק', status: 'נוצר על ידי AI', statusClass: true },
+                { check: 'ai', label: 'מיתוג ועיצוב', status: 'נוצר על ידי AI', statusClass: true },
               ].map((row) => (
                 <div key={row.label} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', background: 'rgba(255,255,255,0.03)', borderRadius: 'var(--radius-sm)', marginBottom: 8, border: '1px solid var(--border)' }}>
                   <div style={{ width: 20, height: 20, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, flexShrink: 0, background: row.check === 'has' ? 'rgba(200,169,110,0.15)' : 'rgba(100,200,100,0.15)', color: row.check === 'has' ? 'var(--gold)' : '#4ade80' }}>{row.check === 'has' ? '✓' : '✦'}</div>
-                  <div style={{ fontSize: 13, flex: 1, textAlign: 'left' as const }}>{row.label}</div>
+                  <div style={{ fontSize: 13, flex: 1, textAlign: 'right' as const }}>{row.label}</div>
                   <div style={{ fontSize: 11, color: row.statusClass ? '#4ade80' : 'var(--text-muted)' }}>{row.status}</div>
                 </div>
               ))}
               <div style={{ fontSize: 24, color: 'var(--gold)', margin: '16px 0' }}>↓</div>
-              <div style={{ background: 'rgba(200,169,110,0.06)', border: '1px solid rgba(200,169,110,0.25)', borderRadius: 'var(--radius-sm)', padding: 16, textAlign: 'center' as const }}>
-                <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: 14, color: 'var(--gold)' }}>Complete storefront — ready to sell</div>
-                <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>Generated in under 60 seconds</div>
+              <div style={{ background: 'rgba(200,169,110,0.06)', border: '1px solid rgba(200,169,110,0.25)', borderRadius: 'var(--radius-sm)', padding: 16 }}>
+                <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: 14, color: 'var(--gold)' }}>חנות מלאה — מוכנה למכירה</div>
+                <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>נוצרה תוך פחות מ-60 שניות</div>
               </div>
             </div>
           </div>
@@ -455,16 +422,16 @@ export default function Home() {
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
             <div>
-              <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.2em', color: 'var(--gold)', fontFamily: 'var(--font-syne)', marginBottom: 16 }}>Live Selling</div>
+              <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.2em', color: 'var(--gold)', fontFamily: 'var(--font-syne)', marginBottom: 16 }}>מכירה בשידור חי</div>
               <h2 style={{ fontFamily: 'var(--font-syne)', fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 800, lineHeight: 1.1, marginBottom: 16, letterSpacing: '-0.02em' }}>
-                <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Go live.</em> Sell in real time.
+                <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>עלו לאוויר.</em> מכרו בזמן אמת.
               </h2>
-              <p style={{ fontSize: 17, color: 'var(--text-muted)', maxWidth: 520, lineHeight: 1.7, marginBottom: 40 }}>Like TikTok Live — but for your business. Show your work, take bookings, and sell services while customers are watching.</p>
+              <p style={{ fontSize: 17, color: 'var(--text-muted)', maxWidth: 520, lineHeight: 1.7, marginBottom: 40 }}>כמו TikTok Live — אבל לעסק שלך. הראו את העבודה, קבלו הזמנות ומכרו שירותים בזמן שהלקוחות צופים.</p>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 20, marginBottom: 32 }}>
                 {[
-                  { icon: '🔴', title: 'Go Live from anywhere', desc: 'Start a live session from your phone. Your followers get notified instantly.' },
-                  { icon: '🛒', title: 'Sell during the session', desc: 'Pin services, set limited-time offers, and let customers book or buy in real time.' },
-                  { icon: '💬', title: 'Real-time interaction', desc: 'Customers chat, ask questions, and you respond live — building trust and closing sales instantly.' },
+                  { icon: '🔴', title: 'עלו לשידור מכל מקום', desc: 'התחילו שידור חי מהטלפון. העוקבים שלכם מקבלים התראה מיידית.' },
+                  { icon: '🛒', title: 'מכרו במהלך השידור', desc: 'הצמידו שירותים, הגדירו מבצעי זמן מוגבל ואפשרו ללקוחות להזמין או לקנות בזמן אמת.' },
+                  { icon: '💬', title: 'אינטראקציה בזמן אמת', desc: 'לקוחות מצ\'אטים, שואלים שאלות ואתם עונים ישירות — בונים אמון וסוגרים עסקאות מיד.' },
                 ].map((f) => (
                   <div key={f.title} style={{ display: 'flex', gap: 16, padding: 20, borderRadius: 'var(--radius)', border: '1px solid var(--border)', background: 'var(--card-bg)' }}>
                     <div style={{ width: 40, height: 40, borderRadius: 'var(--radius-sm)', background: 'rgba(200,169,110,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, flexShrink: 0 }}>{f.icon}</div>
@@ -482,7 +449,7 @@ export default function Home() {
                 fontFamily: 'var(--font-syne)', display: 'inline-flex', alignItems: 'center', gap: 10,
               }}>
                 <span style={{ background: '#e74c3c', width: 10, height: 10, borderRadius: '50%', display: 'inline-block' }} />
-                Start selling live
+                התחילו למכור בשידור חי
               </button>
             </div>
             <div>
@@ -490,22 +457,22 @@ export default function Home() {
                 <div style={{ background: '#e74c3c', padding: '14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: 14, color: 'white', display: 'flex', alignItems: 'center', gap: 8 }}>
                     <span style={{ width: 8, height: 8, background: 'white', borderRadius: '50%', animation: 'pulse 1s infinite', display: 'inline-block' }} />
-                    LIVE NOW
+                    שידור חי
                   </div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)' }}>👁 47 watching</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)' }}>👁 47 צופים</div>
                 </div>
                 <div style={{ padding: 20 }}>
                   <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', padding: 16, marginBottom: 16, display: 'flex', gap: 16, alignItems: 'center' }}>
                     <div style={{ width: 60, height: 60, borderRadius: 'var(--radius-sm)', background: 'linear-gradient(135deg, var(--gold-dark), var(--gold))', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24 }}>💅</div>
                     <div>
-                      <h4 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: 14, marginBottom: 4 }}>Gel Manicure Special</h4>
-                      <div style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 6 }}>Limited offer — today only</div>
+                      <h4 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: 14, marginBottom: 4 }}>מבצע מניקור ג&apos;ל</h4>
+                      <div style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 6 }}>מבצע מוגבל — להיום בלבד</div>
                       <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--gold)', fontFamily: 'var(--font-syne)' }}>₪99 <span style={{ fontSize: 14, textDecoration: 'line-through', color: 'var(--text-muted)', fontWeight: 400 }}>₪120</span></div>
                     </div>
                   </div>
-                  <button style={{ width: '100%', background: 'var(--gold)', color: 'var(--black)', border: 'none', padding: 12, borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-syne)', marginBottom: 12 }}>📅 Book this now</button>
+                  <button style={{ width: '100%', background: 'var(--gold)', color: 'var(--black)', border: 'none', padding: 12, borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-syne)', marginBottom: 12 }}>📅 הזמינו עכשיו</button>
                   <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 6 }}>
-                    {[['Sarah K.', 'Can you do tomorrow at 3pm?'], ['Dina M.', 'Love your work! 🔥'], ['Rina T.', 'What colors do you have?']].map(([user, msg]) => (
+                    {[['שרה כ.', 'אפשר מחר ב-15:00?'], ['דינה מ.', 'אוהבת את העבודה שלך! 🔥'], ['רינה ט.', 'אילו צבעים יש לך?']].map(([user, msg]) => (
                       <div key={user} style={{ fontSize: 12, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 6 }}>
                         <span style={{ color: 'var(--gold)', fontWeight: 500 }}>{user}</span> {msg}
                       </div>
@@ -523,16 +490,16 @@ export default function Home() {
       {/* DISTRIBUTION */}
       <section style={{ padding: '100px 48px', position: 'relative', zIndex: 1 }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.2em', color: 'var(--gold)', fontFamily: 'var(--font-syne)', marginBottom: 16 }}>Instant Distribution</div>
+          <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.2em', color: 'var(--gold)', fontFamily: 'var(--font-syne)', marginBottom: 16 }}>הפצה מיידית</div>
           <h2 style={{ fontFamily: 'var(--font-syne)', fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 800, lineHeight: 1.1, marginBottom: 16, letterSpacing: '-0.02em' }}>
-            Post everywhere.<br /><em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>One click.</em>
+            פרסמו בכל מקום.<br /><em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>לחיצה אחת.</em>
           </h2>
-          <p style={{ fontSize: 17, color: 'var(--text-muted)', maxWidth: 520, lineHeight: 1.7, marginBottom: 60 }}>Stop posting manually to every platform. MAADRIM distributes your storefront to all your channels instantly.</p>
+          <p style={{ fontSize: 17, color: 'var(--text-muted)', maxWidth: 520, lineHeight: 1.7, marginBottom: 60 }}>הפסיקו לפרסם ידנית בכל פלטפורמה. MAADRIM מפיץ את החנות שלך לכל הערוצים שלך מיידית.</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
             {[
-              { icon: '💬', name: 'WhatsApp', desc: 'Share your storefront link to all your WhatsApp contacts and groups. Where your Israeli customers already are.' },
-              { icon: '📸', name: 'Instagram', desc: 'Auto-generate posts and stories for your Instagram. Link in bio, stories, and posts — all in one tap.' },
-              { icon: '📘', name: 'Facebook', desc: 'Push your storefront to your Facebook page and business groups where local customers can find you.' },
+              { icon: '💬', name: 'WhatsApp', desc: 'שתפו את קישור החנות שלכם לכל אנשי הקשר והקבוצות שלכם ב-WhatsApp. שם הלקוחות הישראלים כבר נמצאים.' },
+              { icon: '📸', name: 'Instagram', desc: 'יצירת פוסטים וסטוריז אוטומטית לאינסטגרם שלכם. קישור בביו, סטוריז ופוסטים — הכל בהקשה אחת.' },
+              { icon: '📘', name: 'Facebook', desc: 'דחפו את החנות שלכם לדף ה-Facebook ולקבוצות עסקיות מקומיות שבהן לקוחות מקומיים יכולים למצוא אתכם.' },
             ].map((ch) => (
               <div key={ch.name} style={{ background: 'var(--card-bg)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '32px 28px', textAlign: 'center' as const, cursor: 'pointer' }}>
                 <span style={{ fontSize: 36, marginBottom: 16, display: 'block' }}>{ch.icon}</span>
@@ -542,15 +509,15 @@ export default function Home() {
             ))}
           </div>
           <div style={{ marginTop: 48, textAlign: 'center' as const, padding: 40, background: 'rgba(200,169,110,0.04)', border: '1px solid var(--border)', borderRadius: 'var(--radius)' }}>
-            <div style={{ fontFamily: 'var(--font-syne)', fontSize: 22, fontWeight: 700, marginBottom: 8 }}>&ldquo;Reach all your customers in one click&rdquo;</div>
-            <div style={{ fontSize: 15, color: 'var(--text-muted)', marginBottom: 24 }}>Stop wasting time posting manually. Let MAADRIM handle your distribution.</div>
+            <div style={{ fontFamily: 'var(--font-syne)', fontSize: 22, fontWeight: 700, marginBottom: 8 }}>&ldquo;הגיעו לכל הלקוחות שלכם בלחיצה אחת&rdquo;</div>
+            <div style={{ fontSize: 15, color: 'var(--text-muted)', marginBottom: 24 }}>הפסיקו לבזבז זמן על פרסום ידני. תנו ל-MAADRIM לטפל בהפצה שלכם.</div>
             <button onClick={() => scrollTo('pricing')} style={{
               background: 'var(--gold)', color: 'var(--black)', border: 'none',
               padding: '16px 36px', borderRadius: 'var(--radius-sm)',
               fontSize: 17, fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-syne)',
               display: 'inline-flex', alignItems: 'center', gap: 10,
             }}>
-              Start distributing now
+              התחילו להפיץ עכשיו
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
           </div>
@@ -562,64 +529,64 @@ export default function Home() {
       {/* PRICING */}
       <section id="pricing" style={{ padding: '100px 48px', position: 'relative', zIndex: 1 }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.2em', color: 'var(--gold)', fontFamily: 'var(--font-syne)', marginBottom: 16 }}>Pricing</div>
+          <div style={{ fontSize: 11, textTransform: 'uppercase' as const, letterSpacing: '0.2em', color: 'var(--gold)', fontFamily: 'var(--font-syne)', marginBottom: 16 }}>מחירים</div>
           <h2 style={{ fontFamily: 'var(--font-syne)', fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 800, lineHeight: 1.1, marginBottom: 16, letterSpacing: '-0.02em' }}>
-            Start free. <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Grow when ready.</em>
+            התחילו בחינם. <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>גדלו כשמוכנים.</em>
           </h2>
-          <p style={{ fontSize: 17, color: 'var(--text-muted)', maxWidth: 520, lineHeight: 1.7, marginBottom: 40 }}>No hidden fees. No complicated contracts. Start for free and upgrade when your business grows.</p>
+          <p style={{ fontSize: 17, color: 'var(--text-muted)', maxWidth: 520, lineHeight: 1.7, marginBottom: 40 }}>ללא עמלות נסתרות. ללא חוזים מסובכים. התחילו בחינם ושדרגו כשהעסק שלכם גדל.</p>
 
           {/* AI LIMIT BANNER */}
           <div style={{ background: 'rgba(200,169,110,0.06)', border: '1px solid rgba(200,169,110,0.3)', borderRadius: 'var(--radius)', padding: '24px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 60, gap: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
               <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(200,169,110,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0 }}>⚡</div>
               <div>
-                <h4 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: 15, marginBottom: 4 }}>You&apos;re almost at your weekly AI limit</h4>
-                <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>Free plan includes 5 AI generations per week. Upgrade to Pro for unlimited access.</p>
+                <h4 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: 15, marginBottom: 4 }}>כמעט הגעתם למגבלת ה-AI השבועית</h4>
+                <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>התוכנית החינמית כוללת 5 יצירות AI בשבוע. שדרגו ל-Pro לגישה בלתי מוגבלת.</p>
                 <div style={{ marginTop: 8, background: 'rgba(255,255,255,0.06)', borderRadius: 100, height: 4, width: 200, overflow: 'hidden' }}>
                   <div style={{ height: '100%', width: '85%', background: 'var(--gold)', borderRadius: 100 }} />
                 </div>
               </div>
             </div>
-            <button onClick={() => scrollTo('pricing')} style={{ background: 'var(--gold)', color: 'var(--black)', border: 'none', padding: '12px 24px', borderRadius: 'var(--radius-sm)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-syne)', whiteSpace: 'nowrap' }}>Upgrade to Pro →</button>
+            <button onClick={() => scrollTo('pricing')} style={{ background: 'var(--gold)', color: 'var(--black)', border: 'none', padding: '12px 24px', borderRadius: 'var(--radius-sm)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-syne)', whiteSpace: 'nowrap' }}>שדרגו ל-Pro ←</button>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
             {[
               {
-                name: 'Free', price: '₪0', period: '/ month', trial: '7-day free trial on Pro features',
+                name: 'חינם', price: '₪0', period: '/ חודש', trial: '7 ימי ניסיון על תכונות Pro',
                 featured: false, badge: null,
                 features: [
-                  { check: true, text: 'Basic storefront' }, { check: true, text: 'WhatsApp button' },
-                  { check: true, text: '5 AI generations/week' }, { check: true, text: '3 services listed' },
-                  { check: false, text: 'Booking system' }, { check: false, text: 'Social distribution' },
-                  { check: false, text: 'Live selling' }, { check: false, text: 'Custom domain' },
+                  { check: true, text: 'חנות בסיסית' }, { check: true, text: 'כפתור WhatsApp' },
+                  { check: true, text: '5 יצירות AI בשבוע' }, { check: true, text: '3 שירותים מוצגים' },
+                  { check: false, text: 'מערכת הזמנות' }, { check: false, text: 'הפצה לרשתות חברתיות' },
+                  { check: false, text: 'מכירה בשידור חי' }, { check: false, text: 'דומיין מותאם אישית' },
                 ],
                 btnStyle: { background: 'rgba(255,255,255,0.06)', color: 'var(--white)', border: '1px solid var(--border)' },
-                btnText: 'Start for free',
+                btnText: 'התחילו בחינם',
               },
               {
-                name: 'Pro', price: '₪79', period: '/ month', trial: 'First 7 days free, cancel anytime',
-                featured: true, badge: 'Most Popular',
+                name: 'Pro', price: '₪79', period: '/ חודש', trial: '7 ימים ראשונים בחינם, ביטול בכל עת',
+                featured: true, badge: 'הכי פופולרי',
                 features: [
-                  { check: true, text: 'Full storefront' }, { check: true, text: 'Booking system' },
-                  { check: true, text: 'Unlimited services' }, { check: true, text: 'Social distribution' },
-                  { check: true, text: '50 AI generations/week' }, { check: true, text: 'Custom domain' },
-                  { check: true, text: 'Analytics dashboard' }, { check: false, text: 'Live selling' },
+                  { check: true, text: 'חנות מלאה' }, { check: true, text: 'מערכת הזמנות' },
+                  { check: true, text: 'שירותים ללא הגבלה' }, { check: true, text: 'הפצה לרשתות חברתיות' },
+                  { check: true, text: '50 יצירות AI בשבוע' }, { check: true, text: 'דומיין מותאם אישית' },
+                  { check: true, text: 'לוח אנליטיקס' }, { check: false, text: 'מכירה בשידור חי' },
                 ],
                 btnStyle: { background: 'var(--gold)', color: 'var(--black)', border: 'none' },
-                btnText: 'Start selling — ₪79/mo',
+                btnText: 'התחילו למכור — ₪79/חודש',
               },
               {
-                name: 'Advanced AI', price: '₪139', period: '/ month', trial: 'Includes all Pro features',
+                name: 'AI מתקדם', price: '₪139', period: '/ חודש', trial: 'כולל את כל תכונות Pro',
                 featured: false, badge: null,
                 features: [
-                  { check: true, text: 'Everything in Pro' }, { check: true, text: 'Live selling platform' },
-                  { check: true, text: 'Unlimited AI usage' }, { check: true, text: 'Advanced AI prompts' },
-                  { check: true, text: 'Priority support' }, { check: true, text: 'AI content generation' },
-                  { check: true, text: 'Team access' }, { check: true, text: 'API access' },
+                  { check: true, text: 'הכל ב-Pro' }, { check: true, text: 'פלטפורמת שידור חי' },
+                  { check: true, text: 'AI ללא הגבלה' }, { check: true, text: 'פרומפטים AI מתקדמים' },
+                  { check: true, text: 'תמיכה עדיפה' }, { check: true, text: 'יצירת תוכן AI' },
+                  { check: true, text: 'גישת צוות' }, { check: true, text: 'גישת API' },
                 ],
                 btnStyle: { background: 'rgba(200,169,110,0.1)', color: 'var(--gold)', border: '1px solid rgba(200,169,110,0.3)' },
-                btnText: 'Unlock everything',
+                btnText: 'פתחו את הכל',
               },
             ].map((plan) => (
               <div key={plan.name} style={{
@@ -654,9 +621,9 @@ export default function Home() {
       <div style={{ textAlign: 'center' as const, padding: '120px 48px', position: 'relative', overflow: 'hidden', zIndex: 1 }}>
         <div style={{ position: 'absolute', width: 600, height: 600, background: 'radial-gradient(circle, rgba(200,169,110,0.1) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }} />
         <h2 style={{ fontFamily: 'var(--font-syne)', fontSize: 'clamp(40px, 5vw, 72px)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: 20, position: 'relative' }}>
-          Your business deserves<br /><em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>to be found.</em>
+          העסק שלכם ראוי<br /><em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>להימצא.</em>
         </h2>
-        <p style={{ fontSize: 18, color: 'var(--text-muted)', marginBottom: 40, position: 'relative' }}>Join real businesses in Tel Aviv launching with MAADRIM.</p>
+        <p style={{ fontSize: 18, color: 'var(--text-muted)', marginBottom: 40, position: 'relative' }}>הצטרפו לעסקים אמיתיים בתל אביב שמשיקים עם MAADRIM.</p>
         <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' as const, position: 'relative' }}>
           <button onClick={handleGenerate} style={{
             background: 'var(--gold)', color: 'var(--black)', border: 'none',
@@ -664,14 +631,14 @@ export default function Home() {
             fontSize: 17, fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-syne)',
             display: 'inline-flex', alignItems: 'center', gap: 10,
           }}>
-            Create your storefront — it&apos;s free
+            צרו את החנות שלכם — בחינם
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
           <button onClick={() => scrollTo('live')} style={{
             background: 'transparent', color: 'var(--white)', border: '1px solid var(--border)',
             padding: '16px 36px', borderRadius: 'var(--radius-sm)',
             fontSize: 17, fontWeight: 500, cursor: 'pointer', fontFamily: 'var(--font-dm-sans)',
-          }}>See how it works</button>
+          }}>ראו איך זה עובד</button>
         </div>
       </div>
 
@@ -679,13 +646,13 @@ export default function Home() {
       <footer style={{ borderTop: '1px solid var(--border)', padding: '40px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 1 }}>
         <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: 18, letterSpacing: '0.12em', color: 'var(--gold)' }}>MAADRIM</div>
         <div style={{ display: 'flex', gap: 24, fontSize: 13, color: 'var(--text-muted)' }}>
-          {['Privacy', 'Terms', 'Contact', 'Support'].map((l) => (
+          {['פרטיות', 'תנאי שימוש', 'צור קשר', 'תמיכה'].map((l) => (
             <a key={l} href="#" style={{ color: 'inherit', textDecoration: 'none' }}>{l}</a>
           ))}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-muted)' }}>
           <span style={{ width: 6, height: 6, background: 'var(--gold)', borderRadius: '50%', animation: 'pulse 2s infinite', display: 'inline-block' }} />
-          Launching in Tel Aviv, Israel 🇮🇱
+          מתחילים בתל אביב, ישראל 🇮🇱
         </div>
       </footer>
     </>
